@@ -14,7 +14,11 @@ link nya ada di kanan atas kok di (download/clone repository)
 
 Nanti habis di clone, muncul folder EncasedJS, nah pindah ke direktori itu untuk command-command git selanjutnya
 
+## More commands
+
 Di branch masing-masing, misal branch christo
+
+### Pull
 
 Pull dari branch sendiri (harusnya g perlu, soalnya di repo sm komputer lu pasti lebih up to date komputer lu)
 ```
@@ -29,11 +33,15 @@ Pull dari branch orang
 git pull origin siapapun
 ```
 
+### Push
+
 Push ke branch sendiri
 ```
 git push origin christo
 ```
 Jangan push ke branch orang :( atau ke master x(
+
+### Commit
 
 Setelah edit-edit,
 kalo mau push harus commit dulu
@@ -46,6 +54,8 @@ Commit, dengan message
 ```
 git commit -m "Message di sini, bikin yang relevan, contoh: tambah button, etc"
 ```
+
+### Tambahan
 
 Untuk liat status, sangat membantu
 ```
