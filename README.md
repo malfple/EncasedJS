@@ -3,9 +3,11 @@ Encased, but in Javascript >:)
 
 ## Getting Started
 
-Download git kalo blom punya.
+Download/install git kalo blom punya.
 
-Clone Repository
+### Clone Repository
+
+Dengan console, pindah ke direktori buat tempat project nya.
 
 Ada dua cara, pake https atau ssh
 
