@@ -5,14 +5,16 @@ Encased, but in Javascript >:)
 
 Download git kalo blom punya.
 
-
 Clone Repository
+
 Ada dua cara, pake https atau ssh
+
 Kalo pake https
 ```
 git clone https://github.com/malfple/EncasedJS.git
 ```
 Kalo pake ssh
+
 Generate ssh key dulu kalo blom punya, bisa cari di settings, caranya ada di situ semua.
 ```
 git clone git@github.com:malfple/EncasedJS.git
@@ -56,6 +58,7 @@ Tiap kalo push, kalo pake https, masukin username/password github.
 ### Commit
 
 Setelah edit-edit,
+
 kalo mau push harus commit dulu
 
 Untuk tambahin semua file yang ke-edit untuk di-commit
