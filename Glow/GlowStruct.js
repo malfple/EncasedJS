@@ -1,4 +1,4 @@
-// line constructor
+// simple line object
 function Line(a, b, c, d){
 	this.x1 = a;
 	this.y1 = b;
@@ -6,13 +6,19 @@ function Line(a, b, c, d){
 	this.y2 = d;
 }
 
-//glow struct constructor
+/*
+	Glow Struct
+
+	This will be the main sprite for almost all the entities in this game.
+	It stores a list of lines, which is drawn simultaneously into a line drawing
+	It also stores the color
+*/
 function GlowStruct(){
 	this.lines = [];
 	this.r = 255;
 	this.g = 255;
 	this.b = 255;
-	this.radius = 1;
+	this.radius = 1; // for collision checking
 	this.stretch = 1;
 }
 

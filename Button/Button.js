@@ -16,7 +16,7 @@ function TextButton(str, fontsize, x, y, ctx){
 TextButton.prototype.render = function(ctx){
 	drawText(this.text, this.height, this.x, this.y, 1);
 
-	if(this.mouseIn){
+	if(this.mouseIn){ // draw 2 horizontal lines when mouse inside button
 		if(this.mouseDown)ctx.strokeStyle = "#FF0000";
 		else ctx.strokeStyle = "#FFFFFF";
 		ctx.beginPath();
@@ -30,11 +30,11 @@ TextButton.prototype.render = function(ctx){
 
 TextButton.prototype.handleMouseDown = function(mousedown){
 	if(this.mouseIn){
-		if(mousedown == 1){
+		if(mousedown == 1){ // pressed inside button
 			this.mouseDown = true;
 			this.clicked = false;
-		}else{
-			if(this.mouseDown){
+		}else{ // released inside button
+			if(this.mouseDown){ // only if already pressed previously
 				this.mouseDown = false;
 				this.clicked = true;
 			}
@@ -54,9 +54,9 @@ TextButton.prototype.getClick = function(){
 };
 
 TextButton.prototype.runCycle = function(){
-	if(mouseY >= this.y - this.height/2 && mouseY <= this.y + this.height/2){
+	if(mouseY >= this.y - this.height/2 && mouseY <= this.y + this.height/2){ // if mouse inside button
 		this.mouseIn = true;
-	}else{
+	}else{ // if not
 		this.mouseIn = false;
 		this.mouseDown = false;
 	}
