@@ -1,5 +1,5 @@
 // str,fontsize = text, ctx = canvas.contex
-function TextButton(str, fontsize, x, y){
+function TextButton(str, fontsize, x, y, ctx){
 	this.x = x;
 	this.y = y;
 	this.text = str;
@@ -13,7 +13,7 @@ function TextButton(str, fontsize, x, y){
 	this.clicked = false;
 }
 
-TextButton.prototype.render = function(){
+TextButton.prototype.render = function(ctx){
 	drawText(this.text, this.height, this.x, this.y, 1);
 
 	if(this.mouseIn){
@@ -58,5 +58,6 @@ TextButton.prototype.runCycle = function(){
 		this.mouseIn = true;
 	}else{
 		this.mouseIn = false;
+		this.mouseDown = false;
 	}
 };

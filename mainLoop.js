@@ -9,7 +9,7 @@ const ctx = canvas.getContext("2d");
 var lastRec = 0;
 
 //buttons
-var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300);
+var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
 
 //the menu
 /*
@@ -38,7 +38,7 @@ function mainLoop(timestamp){
 	if(mainMenu == 1){
 		drawText("Encased", 96, SCREEN_WIDTH/2, 100, 1);
 		btPlay.runCycle();
-		btPlay.render();
+		btPlay.render(ctx);
 
 		if(btPlay.getClick()){
 			mainMenu = 2;
