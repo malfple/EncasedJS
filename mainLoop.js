@@ -5,11 +5,18 @@ canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
 const ctx = canvas.getContext("2d");
 
+const ARENA_WIDTH = 3000;
+const ARENA_HEIGHT = 3000;
+
 // timer last record
 var lastRec = 0;
 
 //buttons
 var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
+
+//spaceship
+var playerSS;
+var camX, camY;
 
 //the menu
 /*
@@ -31,6 +38,10 @@ function mainLoop(timestamp){
 			btPlay.handleMouseDown(mousedown);
 		}
 	}
+	// keyboard events
+	if(mainMenu == 2){
+		playerSS.handleKeyboardInput(keyboardState);
+	}
 
 	//clear
 	ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -42,7 +53,18 @@ function mainLoop(timestamp){
 
 		if(btPlay.getClick()){
 			mainMenu = 2;
+			newGame();
 		}
+	}else if(mainMenu == 2){
+		drawText("halo", 30, ARENA_WIDTH/2.5-camX, ARENA_HEIGHT/2.5-camY, 1);
+
+		// update camera
+		camX = playerSS.x - SCREEN_WIDTH/2;
+		camY = playerSS.y - SCREEN_HEIGHT/2;
+
+		playerSS.runCycle(frameTime);
+
+		playerSS.render(ctx, camX, camY);
 	}
 
 	requestAnimationFrame(mainLoop);
@@ -50,7 +72,10 @@ function mainLoop(timestamp){
 
 requestAnimationFrame(mainLoop);
 
-// MOUSE
+// creates a new game
+function newGame(){
+	playerSS = new SpaceShip(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5);
+}
 
 // str = string to draw, fontsize,
 //x,y = coordinate of left top of text if center = 0, (center of text if center = 1)

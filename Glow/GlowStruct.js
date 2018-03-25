@@ -36,7 +36,7 @@ GlowStruct.prototype.addLine = function(x1, y1, x2, y2){
 }
 
 GlowStruct.prototype.render = function(ctx, x, y, angle=0){
-	angle = angle / 180 * Math.acos(-1);
+	angle = angle / 180 * Math.PI;
 	var cos = Math.cos(angle);
 	var sin = Math.sin(angle);
 

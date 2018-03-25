@@ -1,14 +1,14 @@
-// array of keyboard statuses, 1 -> pressed, 0 -> not pressed
+// array of keyboard statuses, true -> pressed, false -> not pressed
 var keyboardState = new Array(256);
 
 document.addEventListener("keydown", function(event){
-	keyboardState[event.keyCode] = 1;
+	keyboardState[event.keyCode] = true;
 })
 
 document.addEventListener("keyup", function(event){
-	keyboardState[event.keyCode] = 0;
+	keyboardState[event.keyCode] = false;
 })
 
 function flushKeyboardState(){
-	keyboardState.fill(0);
+	keyboardState.fill(false);
 }
