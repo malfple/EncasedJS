@@ -1,6 +1,8 @@
 # EncasedJS
 Encased, but in Javascript >:)
 
+[Click here to play it online from rawgit](https://rawgit.com/malfple/EncasedJS/master/index.html)
+
 ## Getting Started
 
 Download/install git kalo blom punya.
