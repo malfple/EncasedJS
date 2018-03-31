@@ -5,8 +5,10 @@ canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
 const ctx = canvas.getContext("2d");
 
-const ARENA_WIDTH = 3000;
-const ARENA_HEIGHT = 3000;
+var CURRENT_ARENA_WIDTH = SCREEN_WIDTH;
+var CURRENT_ARENA_HEIGHT = SCREEN_HEIGHT;
+const ARENA_WIDTH = 500;
+const ARENA_HEIGHT = 500;
 
 // timer last record
 var lastRec = 0;
@@ -16,7 +18,7 @@ var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
 
 //spaceship
 var playerSS;
-var camX, camY;
+var camX = 0, camY = 0;
 
 //the menu
 /*
@@ -46,6 +48,7 @@ function mainLoop(timestamp){
 	//clear
 	ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+	//buttons/texts/misc and playerSS
 	if(mainMenu == 1){
 		drawText("Encased", 96, SCREEN_WIDTH/2, 100, 1);
 		btPlay.runCycle();
@@ -56,6 +59,8 @@ function mainLoop(timestamp){
 			newGame();
 		}
 	}else if(mainMenu == 2){
+		renderArena();
+
 		drawText("halo", 30, ARENA_WIDTH/2.5-camX, ARENA_HEIGHT/2.5-camY, 1);
 
 		// update camera
@@ -67,6 +72,16 @@ function mainLoop(timestamp){
 		playerSS.render(ctx, camX, camY);
 	}
 
+
+	// explosions
+	if(mainMenu != 21){
+		Explosions.runCycle(frameTime);
+		Explosions.render(ctx, camX, camY);
+	}
+	if(mainMenu == 1){
+		Explosions.createRandomExplosions();
+	}
+
 	requestAnimationFrame(mainLoop);
 }
 
@@ -75,6 +90,8 @@ requestAnimationFrame(mainLoop);
 // creates a new game
 function newGame(){
 	playerSS = new SpaceShip(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5);
+	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
+	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;
 }
 
 // str = string to draw, fontsize,
@@ -87,4 +104,19 @@ function drawText(str, fontsize, x, y, center = 0){
 	}else{
 		ctx.fillText(str, x, y);
 	}
+}
+
+function renderArena(){
+	ctx.strokeStyle = "#FFFFFF";
+	ctx.beginPath();
+	ctx.moveTo(-camX, -camY);
+	ctx.lineTo(ARENA_WIDTH-camX, -camY);
+	ctx.moveTo(ARENA_WIDTH-camX, -camY);
+	ctx.lineTo(ARENA_WIDTH-camX, ARENA_HEIGHT-camY);
+	ctx.moveTo(ARENA_WIDTH-camX, ARENA_HEIGHT-camY);
+	ctx.lineTo(-camX, ARENA_HEIGHT-camY);
+	ctx.moveTo(-camX, ARENA_HEIGHT-camY);
+	ctx.lineTo(-camX, -camY);
+	ctx.stroke();
+	ctx.closePath();
 }

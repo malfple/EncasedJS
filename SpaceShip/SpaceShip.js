@@ -1,7 +1,5 @@
 /*
 	There will only be a single spaceship in the game
-
-	The spaceship controls the camera
 */
 
 function SpaceShip(x, y){
@@ -78,7 +76,11 @@ SpaceShip.prototype.runCycle = function(timeFrame){
 	if(this.vy > maxspeedy)this.vy = maxspeedy;
 	if(this.vy < -maxspeedy)this.vy = -maxspeedy;
 
-	console.log(this.vx + " " + this.vy);
+	// limit inside arena
+	if(this.x < SpaceShip.WIDTH/2)this.x = SpaceShip.WIDTH/2;
+	if(this.x > CURRENT_ARENA_WIDTH - SpaceShip.WIDTH/2)this.x = CURRENT_ARENA_WIDTH - SpaceShip.WIDTH/2;
+	if(this.y < SpaceShip.HEIGHT/2)this.y = SpaceShip.HEIGHT/2;
+	if(this.y > CURRENT_ARENA_HEIGHT - SpaceShip.HEIGHT/2)this.y = CURRENT_ARENA_HEIGHT - SpaceShip.HEIGHT/2;
 }
 
 SpaceShip.prototype.render = function(ctx, offsetx, offsety){
