@@ -12,6 +12,7 @@ const ARENA_HEIGHT = 500;
 
 // timer last record
 var lastRec = 0;
+const FRAME_TIME_CAP = 50;
 
 //buttons
 var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
@@ -31,6 +32,7 @@ var mainMenu = 1;
 function mainLoop(timestamp){
 	var frameTime = timestamp - lastRec;
 	lastRec = timestamp;
+	frameTime = Math.min(frameTime, FRAME_TIME_CAP);
 
 	//mouse event queue
 	while(!mouseClickQueue.isEmpty()){
