@@ -7,7 +7,7 @@ const ctx = canvas.getContext("2d");
 
 var CURRENT_ARENA_WIDTH = SCREEN_WIDTH;
 var CURRENT_ARENA_HEIGHT = SCREEN_HEIGHT;
-const ARENA_WIDTH = 500;
+const ARENA_WIDTH = 1000;
 const ARENA_HEIGHT = 500;
 
 // timer last record
@@ -38,7 +38,9 @@ function mainLoop(timestamp){
 
 		if(mainMenu == 1){
 			btPlay.handleMouseDown(mousedown);
-		}
+		}else
+
+		playerSS.handleMouseEvent(mousedown);
 	}
 	// keyboard events
 	if(mainMenu == 2){
@@ -68,6 +70,7 @@ function mainLoop(timestamp){
 		camY = playerSS.y - SCREEN_HEIGHT/2;
 
 		playerSS.runCycle(frameTime);
+		playerSS.shootCycle(Bullets, camX, camY);
 
 		playerSS.render(ctx, camX, camY);
 	}
@@ -82,6 +85,12 @@ function mainLoop(timestamp){
 		Explosions.createRandomExplosions();
 	}
 
+	// bullets
+	if(mainMenu == 2){
+		Bullets.runCycle(frameTime);
+		Bullets.render(ctx, camX, camY);
+	}
+
 	requestAnimationFrame(mainLoop);
 }
 
@@ -92,6 +101,7 @@ function newGame(){
 	playerSS = new SpaceShip(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5);
 	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
 	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;
+	Explosions.clear();
 }
 
 // str = string to draw, fontsize,
