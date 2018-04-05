@@ -10,6 +10,10 @@ Containers.prototype.add = function(contained){
 	this.arr.push(contained);
 }
 
+Containers.prototype.deathAction = function(theDead){
+	// empty function
+}
+
 Containers.prototype.runCycle = function(delta){
 	var tmp = this.arr;
 	for(var i=0; i<tmp.length; i++){
@@ -19,6 +23,8 @@ Containers.prototype.runCycle = function(delta){
 	for(var i=0; i<tmp.length; i++){
 		if(!tmp[i].isDead()){
 			this.arr.push(tmp[i]);
+		}else{
+			this.deathAction(tmp[i]);
 		}
 	}
 }
@@ -43,17 +49,6 @@ Explosions.createRandomExplosions = function(){
 // =================================== Bullet =========================================
 Bullets = new Containers();
 
-Bullets.runCycle = function(delta){
-	var tmp = this.arr;
-	for(var i=0; i<tmp.length; i++){
-		tmp[i].runCycle(delta);
-	}
-	this.arr = [];
-	for(var i=0; i<tmp.length; i++){
-		if(!tmp[i].isDead()){
-			this.arr.push(tmp[i]);
-		}else{
-			Explosions.add(tmp[i].explode())
-		}
-	}
+Bullets.deathAction = function(theDead){
+	Explosions.add(theDead.explode());
 }
