@@ -7,8 +7,8 @@ const ctx = canvas.getContext("2d");
 
 var CURRENT_ARENA_WIDTH = SCREEN_WIDTH;
 var CURRENT_ARENA_HEIGHT = SCREEN_HEIGHT;
-const ARENA_WIDTH = 1000;
-const ARENA_HEIGHT = 500;
+const ARENA_WIDTH = 1500;
+const ARENA_HEIGHT = 1500;
 
 // timer last record
 var lastRec = 0;
@@ -64,8 +64,6 @@ function mainLoop(timestamp){
 		}
 	}else if(mainMenu == 2){
 		renderArena();
-
-		drawText("halo", 30, ARENA_WIDTH/2.5-camX, ARENA_HEIGHT/2.5-camY, 1);
 
 		// update camera
 		camX = playerSS.x - SCREEN_WIDTH/2;

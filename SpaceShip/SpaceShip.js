@@ -33,13 +33,24 @@ SpaceShip.SPREAD_COUNT = 3;
 
 SpaceShip.sprite = new GlowStruct();
 
-SpaceShip.sprite.addLine(-SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2, -SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2);
-SpaceShip.sprite.addLine(-SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2, SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2);
-SpaceShip.sprite.addLine(SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2, SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2);
-SpaceShip.sprite.addLine(SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2, -SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2);
+// SpaceShip.sprite.addLine(-SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2, -SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2);
+// SpaceShip.sprite.addLine(-SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2, SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2);
+// SpaceShip.sprite.addLine(SpaceShip.WIDTH/2, SpaceShip.HEIGHT/2, SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2);
+// SpaceShip.sprite.addLine(SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2, -SpaceShip.WIDTH/2, -SpaceShip.HEIGHT/2);
 
-SpaceShip.sprite.addLine(-10, 0, 0, -20);
-SpaceShip.sprite.addLine(10, 0, 0, -20);
+SpaceShip.sprite.addLine(-5, 5, 0, -5);
+SpaceShip.sprite.addLine(5, 5, 0, -5);
+SpaceShip.sprite.addLine(-5, 5, 5, 5);
+
+SpaceShip.sprite.addLine(0, -20, -12, 5);
+SpaceShip.sprite.addLine(0, -20, 12, 5);
+SpaceShip.sprite.addLine(0, 20, -12, 5);
+SpaceShip.sprite.addLine(0, 20, 12, 5);
+
+SpaceShip.sprite.addLine(-12, -14, -20, 5);
+SpaceShip.sprite.addLine(12, -14, 20, 5);
+SpaceShip.sprite.addLine(-8, 20, -20, 5);
+SpaceShip.sprite.addLine(8, 20, 20, 5);
 
 SpaceShip.sprite.setColor(191, 255, 255);
 
