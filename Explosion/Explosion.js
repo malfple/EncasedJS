@@ -20,15 +20,17 @@ function Explosion(x, y, type){
 // Explosion types
 // 0 -> bullet explosions
 // 1 -> Main Menu Explosions
-Explosion.FRAGMENT_COUNT	= [15,	400];
-Explosion.MIN_SPEED			= [0.3,	0];
-Explosion.MAX_SPEED 		= [0.7,	1.2];
-Explosion.MIN_R 			= [255,	85];
-Explosion.MAX_R				= [255,	204];
-Explosion.MIN_G				= [255,	136];
-Explosion.MAX_G				= [255,	204];
-Explosion.MIN_B				= [102,	255];
-Explosion.MAX_B				= [136,	255];
+// 2 -> EnmSplitter Explosion
+// 3 -> Gameover explosion
+Explosion.FRAGMENT_COUNT	= [15,		400,	30,		40];
+Explosion.MIN_SPEED			= [0.3,		0,		0.8,	0.5];
+Explosion.MAX_SPEED 		= [0.7,		1.2,	1,		1,5];
+Explosion.MIN_R 			= [255,		85,		255,	255];
+Explosion.MAX_R				= [255,		204,	255,	255];
+Explosion.MIN_G				= [255,		136,	255,	0];
+Explosion.MAX_G				= [255,		204,	255,	85];
+Explosion.MIN_B				= [102,		255,	255,	0];
+Explosion.MAX_B				= [136,		255,	255,	85];
 
 Explosion.prototype.runCycle = function(delta){
 	var tmp = this.fragments;
