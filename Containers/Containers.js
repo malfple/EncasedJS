@@ -52,3 +52,19 @@ Bullets = new Containers();
 Bullets.deathAction = function(theDead){
 	Explosions.add(theDead.explode());
 }
+
+Bullets.checkCollision = function(x, y, radius, times){
+	for(var i=0; i<this.arr.length; i++){
+		if(times <= 0)break;
+		var t = this.arr[i];
+		if(t.isDead())continue;
+        if(Math.sqrt((t.x - x)*(t.x - x) + (t.y - y)*(t.y - y)) <= radius){
+        	times--;
+        	t.hitt();
+        }
+	}
+	return times;
+}
+
+// =================================== Enm =========================================
+

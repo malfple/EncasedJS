@@ -27,6 +27,9 @@ GlowStruct.prototype.setColor = function(r, g, b){
 	this.g = g;
 	this.b = b;
 }
+GlowStruct.prototype.setStretch = function(s){
+	this.stretch = s;
+}
 
 GlowStruct.prototype.addLine = function(x1, y1, x2, y2){
 	var midx = (x1+x2)/2;

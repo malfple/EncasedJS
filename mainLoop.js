@@ -29,6 +29,8 @@ var camX = 0, camY = 0;
 */
 var mainMenu = 1;
 
+var test = new EnmSplitter(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5, 1);
+
 function mainLoop(timestamp){
 	var frameTime = timestamp - lastRec;
 	lastRec = timestamp;
@@ -64,6 +66,10 @@ function mainLoop(timestamp){
 		}
 	}else if(mainMenu == 2){
 		renderArena();
+
+		test.runCycle(frameTime);
+		test.render(ctx, camX, camY);
+		test.handleCollision(playerSS, Bullets);
 
 		// update camera
 		camX = playerSS.x - SCREEN_WIDTH/2;
