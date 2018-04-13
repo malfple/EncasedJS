@@ -10,6 +10,10 @@ Containers.prototype.add = function(contained){
 	this.arr.push(contained);
 }
 
+Containers.prototype.getSize = function(){
+	return this.arr.length;
+}
+
 Containers.prototype.deathAction = function(theDead){
 	// empty function
 }

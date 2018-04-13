@@ -21,6 +21,17 @@ var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
 var playerSS;
 var camX = 0, camY = 0;
 
+// the portal
+var gsPortal = new GlowStruct();
+gsPortal.addLine(-50, -50, 50, -50);
+gsPortal.addLine(50, -50, 50, 50);
+gsPortal.addLine(50, 50, -50, 50);
+gsPortal.addLine(-50, 50, -50, -50);
+gsPortal.addLine(-50, 0, 0, -50);
+gsPortal.addLine(50, 0, 0, 50);
+gsPortal.addLine(0, -50, 50, 0);
+gsPortal.addLine(0, 50, -50, 0);
+
 //the menu
 /*
 	1 = main
@@ -73,6 +84,10 @@ function mainLoop(timestamp){
 		playerSS.shootCycle(Bullets, camX, camY);
 
 		playerSS.render(ctx, camX, camY);
+
+		gsPortal.render(ctx, CURRENT_ARENA_WIDTH/2 - camX, CURRENT_ARENA_HEIGHT/2 - camY);
+
+		LevelHandler.runCycle(ctx, frameTime);
 	}
 
 
@@ -109,7 +124,7 @@ function newGame(){
 	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
 	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;
 	Explosions.clear();
-	Enms.add(new EnmSplitter(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5, 4));
+	LevelHandler.newGame();
 }
 
 // str = string to draw, fontsize,
