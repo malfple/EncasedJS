@@ -29,8 +29,6 @@ var camX = 0, camY = 0;
 */
 var mainMenu = 1;
 
-var test = new EnmSplitter(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5, 1);
-
 function mainLoop(timestamp){
 	var frameTime = timestamp - lastRec;
 	lastRec = timestamp;
@@ -67,10 +65,6 @@ function mainLoop(timestamp){
 	}else if(mainMenu == 2){
 		renderArena();
 
-		test.runCycle(frameTime);
-		test.render(ctx, camX, camY);
-		test.handleCollision(playerSS, Bullets);
-
 		// update camera
 		camX = playerSS.x - SCREEN_WIDTH/2;
 		camY = playerSS.y - SCREEN_HEIGHT/2;
@@ -97,6 +91,13 @@ function mainLoop(timestamp){
 		Bullets.render(ctx, camX, camY);
 	}
 
+	// enms
+	if(mainMenu == 2){
+		Enms.runCycle(frameTime);
+		Enms.handleCollision(playerSS);
+		Enms.render(ctx, camX, camY);
+	}
+
 	requestAnimationFrame(mainLoop);
 }
 
@@ -108,6 +109,7 @@ function newGame(){
 	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
 	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;
 	Explosions.clear();
+	Enms.add(new EnmSplitter(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5, 4));
 }
 
 // str = string to draw, fontsize,

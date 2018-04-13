@@ -68,3 +68,15 @@ Bullets.checkCollision = function(x, y, radius, times){
 
 // =================================== Enm =========================================
 
+Enms = new Containers();
+
+Enms.deathAction = function(theDead){
+	Explosions.add(theDead.explode());
+	theDead.spawn(this);
+}
+
+Enms.handleCollision = function(ship){
+	for(var i=0; i<this.arr.length; i++){
+		this.arr[i].handleCollision(ship, Bullets);
+	}
+}

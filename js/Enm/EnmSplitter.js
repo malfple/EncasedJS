@@ -71,6 +71,16 @@ EnmSplitter.prototype.handleCollision = function(ship, Bullets){
     // }
 }
 
+EnmSplitter.prototype.explode = function(){
+    return new Explosion(this.x, this.y, 2);
+}
+EnmSplitter.prototype.spawn = function(Enms){
+    if(this.level == 1)return;
+    for(var i=0; i<EnmSplitter.SPLIT_COUNT; i++){
+        Enms.add(new EnmSplitter(this.x, this.y, this.level-1));
+    }
+}
+
 EnmSplitter.prototype.isDead = function(){
 	return this.dead;
 }
