@@ -95,6 +95,13 @@ function mainLoop(timestamp){
 		}else{
 			LevelHandler.runCycle(ctx, 0);
 		}
+
+		// screen shake
+		if(mainMenu != 21){
+			ScreenShake.runCycle(frameTime);
+			camX += ScreenShake.applyShake();
+			camY += ScreenShake.applyShake();
+		}
 		
 		renderArena();
 
@@ -156,6 +163,7 @@ requestAnimationFrame(mainLoop);
 
 // creates a new game
 function newGame(){
+	ScreenShake.reset();
 	playerSS = new SpaceShip(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5);
 	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
 	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;

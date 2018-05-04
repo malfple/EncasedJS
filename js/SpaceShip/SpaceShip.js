@@ -142,6 +142,7 @@ SpaceShip.prototype.defenseMechanism = function(Bullets){
 }
 
 SpaceShip.prototype.hitt = function(){
+	ScreenShake.shake();
 	this.shieldCount--;
 }
 SpaceShip.prototype.getShieldCount = function(){

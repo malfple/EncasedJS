@@ -67,7 +67,6 @@ EnmSplitter.prototype.handleCollision = function(ship, Bullets){
         this.dead = true;
         ship.hitt();
         ship.defenseMechanism(Bullets);
-        //ScreenShake::shake();
     }
 }
 
