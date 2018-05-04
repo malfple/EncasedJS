@@ -18,6 +18,8 @@ function SpaceShip(x, y){
 
 	this.isFiring = false;
 	this.reloadCounter = 0; // when reaches 1, ready to shoot
+
+	this.shieldCount = SpaceShip.INITIAL_SHIELD_COUNT;
 }
 
 SpaceShip.WIDTH = 40;
@@ -30,6 +32,8 @@ SpaceShip.DECELERATION = 0.003;
 SpaceShip.FIRE_RATE = 0.01; // bullets / tick
 SpaceShip.SPREAD_ANGLE = 10;
 SpaceShip.SPREAD_COUNT = 3;
+
+SpaceShip.INITIAL_SHIELD_COUNT = 5;
 
 SpaceShip.sprite = new GlowStruct();
 
@@ -115,10 +119,6 @@ SpaceShip.prototype.runCycle = function(delta){
 	if(this.reloadCounter > 1 && !this.isFiring)this.reloadCounter = 1;
 }
 
-SpaceShip.prototype.render = function(ctx, offsetx, offsety){
-	SpaceShip.sprite.render(ctx, this.x - offsetx, this.y - offsety, this.angle)
-}
-
 SpaceShip.prototype.shootCycle = function(Bullets, offsetx, offsety){
 	if(!this.isFiring)return;
 	if(this.reloadCounter < 1)return;
@@ -132,4 +132,22 @@ SpaceShip.prototype.shootCycle = function(Bullets, offsetx, offsety){
         Bullets.add(new Bullet(this.x, this.y,
         	((i*2)+1 - SpaceShip.SPREAD_COUNT)*SpaceShip.SPREAD_ANGLE/2 + bulletAngle));
 	}
+}
+
+SpaceShip.prototype.defenseMechanism = function(Bullets){
+	var bulletCount = 360.001 / SpaceShip.SPREAD_ANGLE;
+    for(var i = 0; i < bulletCount; i++){
+        Bullets.add(new Bullet(this.x, this.y, SpaceShip.SPREAD_ANGLE*i));
+    }
+}
+
+SpaceShip.prototype.hitt = function(){
+	this.shieldCount--;
+}
+SpaceShip.prototype.getShieldCount = function(){
+	return this.shieldCount;
+}
+
+SpaceShip.prototype.render = function(ctx, offsetx, offsety){
+	SpaceShip.sprite.render(ctx, this.x - offsetx, this.y - offsety, this.angle)
 }

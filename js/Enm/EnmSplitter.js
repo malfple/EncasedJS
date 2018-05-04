@@ -61,14 +61,14 @@ EnmSplitter.prototype.handleCollision = function(ship, Bullets){
     if(this.dead)return;
 
     //ship collision
-    // if(pShip.getShieldCnt() < 0)return;
-    // double dist = radius + Ship::spShip.getRadius();
-    // if(sqrt((pShip.getX() - this.x)*(pShip.getX() - this.x) + (pShip.getY() - this.y)*(pShip.getY() - this.y)) <= dist){
-    //     this.dead = true;
-    //     pShip.hitt();
-    //     pShip.defenseMechanism(bulletContainer);
-    //     ScreenShake::shake();
-    // }
+    if(ship.getShieldCount() < 0)return;
+    var dist = radius + SpaceShip.sprite.getRadius();
+    if(Math.sqrt((ship.x - this.x)*(ship.x - this.x) + (ship.y - this.y)*(ship.y - this.y)) <= dist){
+        this.dead = true;
+        ship.hitt();
+        ship.defenseMechanism(Bullets);
+        //ScreenShake::shake();
+    }
 }
 
 EnmSplitter.prototype.explode = function(){
