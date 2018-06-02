@@ -20,6 +20,7 @@ var btPlay = new TextButton("play",30, SCREEN_WIDTH/2, 300, ctx);
 //spaceship
 var playerSS;
 var camX = 0, camY = 0;
+var score = 0, finalScore = 0;
 
 // the portal
 var gsPortal = new GlowStruct();
@@ -107,6 +108,7 @@ function mainLoop(timestamp){
 
 		drawText("shield count : " + playerSS.getShieldCount(), 20, 0, 0);
 		drawText("enemy count : " + Enms.getSize(), 20, SCREEN_WIDTH, 0, 2);
+		drawText("score : " + score, 20, 0, SCREEN_HEIGHT-20, 0);
 
 		if(mainMenu != 22){ // if not gameover
 			playerSS.render(ctx, camX, camY);
@@ -153,7 +155,8 @@ function mainLoop(timestamp){
 	if(mainMenu == 21){
 		drawText("paused", 96, SCREEN_WIDTH/2, SCREEN_HEIGHT-100, 1);
 	}else if(mainMenu == 22){
-		drawText("game over", 96, SCREEN_WIDTH/2, SCREEN_HEIGHT-100, 1);
+		drawText("game over", 96, SCREEN_WIDTH/2, SCREEN_HEIGHT-120, 1);
+		drawText("your score: " + finalScore, 48, SCREEN_WIDTH/2, SCREEN_HEIGHT-50, 1);
 	}
 
 	requestAnimationFrame(mainLoop);
@@ -165,6 +168,7 @@ requestAnimationFrame(mainLoop);
 function newGame(){
 	ScreenShake.reset();
 	playerSS = new SpaceShip(ARENA_WIDTH/2.5, ARENA_HEIGHT/2.5);
+	score = 0;
 	CURRENT_ARENA_WIDTH = ARENA_WIDTH;
 	CURRENT_ARENA_HEIGHT = ARENA_HEIGHT;
 	Explosions.clear();
@@ -174,6 +178,7 @@ function newGame(){
 // game over
 function gameOver(){
 	Explosions.add(new Explosion(playerSS.x, playerSS.y, 3));
+	finalScore = score;
 }
 
 // str = string to draw, fontsize,
