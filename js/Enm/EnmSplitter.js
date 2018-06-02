@@ -83,3 +83,7 @@ EnmSplitter.prototype.spawn = function(Enms){
 EnmSplitter.prototype.isDead = function(){
 	return this.dead;
 }
+
+EnmSplitter.prototype.getScore = function(){
+    return this.level;
+}

@@ -77,6 +77,7 @@ Enms = new Containers();
 Enms.deathAction = function(theDead){
 	Explosions.add(theDead.explode());
 	theDead.spawn(this);
+	score += theDead.getScore();
 }
 
 Enms.handleCollision = function(ship){

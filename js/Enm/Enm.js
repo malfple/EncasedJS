@@ -24,3 +24,7 @@ Enm.prototype.handleCollision = function(ship, Bullets){
 Enm.prototype.isDead = function(){
 	return true;
 }
+
+Enm.prototype.getScore = function(){
+	return 0;
+}
