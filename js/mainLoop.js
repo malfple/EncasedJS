@@ -33,6 +33,10 @@ gsPortal.addLine(50, 0, 0, 50);
 gsPortal.addLine(0, -50, 50, 0);
 gsPortal.addLine(0, 50, -50, 0);
 
+window.onload = function(){
+	requestAnimationFrame(mainLoop);
+}
+
 //the menu
 /*
 	1 = main
@@ -161,8 +165,6 @@ function mainLoop(timestamp){
 
 	requestAnimationFrame(mainLoop);
 }
-
-requestAnimationFrame(mainLoop);
 
 // creates a new game
 function newGame(){
