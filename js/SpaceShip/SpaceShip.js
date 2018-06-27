@@ -124,6 +124,8 @@ SpaceShip.prototype.shootCycle = function(Bullets, offsetx, offsety){
 	if(this.reloadCounter < 1)return;
 	this.reloadCounter -= 1;
 
+	Sounds.playSound(Sounds.sShot);
+
 	var mx = mouseX + offsetx;
 	var my = mouseY + offsety;
 

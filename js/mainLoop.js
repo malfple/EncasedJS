@@ -35,6 +35,7 @@ gsPortal.addLine(0, 50, -50, 0);
 
 window.onload = function(){
 	requestAnimationFrame(mainLoop);
+	Sounds.sMusic.play();
 }
 
 //the menu

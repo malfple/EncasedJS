@@ -78,6 +78,7 @@ Enms.deathAction = function(theDead){
 	Explosions.add(theDead.explode());
 	theDead.spawn(this);
 	score += theDead.getScore();
+	Sounds.playSound(Sounds.sExplosion);
 }
 
 Enms.handleCollision = function(ship){
