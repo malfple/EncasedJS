@@ -6,7 +6,7 @@ Sounds.sExplosion = new Audio("Sounds/Explosion+1.wav");
 Sounds.sShot = new Audio("Sounds/shot.wav");
 
 Sounds.playSound = function(sound){
-	var clone = sound.cloneNode();
+	let clone = sound.cloneNode();
 	clone.play();
 }
 
