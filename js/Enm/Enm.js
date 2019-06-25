@@ -21,6 +21,14 @@ Enm.prototype.handleCollision = function(ship, Bullets){
 	//
 }
 
+Enm.prototype.explode = function(){
+	return new Explosion(this.x, this.y, 1);
+}
+
+Enm.prototype.spawn = function(Enms){
+	//
+}
+
 Enm.prototype.isDead = function(){
 	return true;
 }
